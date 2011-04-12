@@ -1,0 +1,27 @@
+/*********************************************************************************************
+ @author: Schmitt, Michael (schmiddim@gmx.at)
+ @date: 09-04-11
+ @desc: ein Beispiel für sprechende Urls (Permalinks)     
+       Das Modul *mod_rewrite* muss im Apacheserver aktiviert sein.
+       Das Skript wertet eine Url aus und erkennt daraus Anweisungen, ob z.B. 
+       			- ein Beitrag ausgegeben werden 
+       			- alle Beiträge für einen Tag
+       			- alle Beiträge für einen Monat
+       			- alle Beiträge für ein Jahr
+       	ausgegeben werden sollen. Die Struktur der Url wird über ein Array definiert.
+     	 
+       	
+			 
+		Verwendung:
+				- In der Datei unittest.php sind ein paar Testfälle. 
+				- Die Datei ins Rootverzeichniss des Apacheservers kopieren. 
+ 				- .htacces an gleicher Stelle mit folgendem Inhalt anlegen:
+					# BEGIN WRoot
+					<IfModule mod_rewrite.c>
+						RewriteEngine On
+						RewriteBase /
+						RewriteCond %{REQUEST_FILENAME} !-f
+						RewriteCond %{REQUEST_FILENAME} !-d
+						RewriteRule . /index.php [L]
+					</IfModule>
+ ******************************************************************************************/
