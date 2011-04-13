@@ -15,7 +15,7 @@ class Post{
 
 	}
 	public function setPermalink(Routing $r){
-		$this->permalink=$r->generateUrl($this->getUrl());
+		$this->permalink=$r->generateUrl($this->getUrlArray());
 
 
 	}
@@ -23,7 +23,7 @@ class Post{
 		return explode(" ", $this->date);
 
 	}
-	public function getUrl(){
+	public function getUrlArray(){
 		$split=$this->splitDate();
 		array_push($split, $this->title);
 		return $split;

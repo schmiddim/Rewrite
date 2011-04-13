@@ -69,8 +69,12 @@ abstract class Routing{
 	 * @param String $text
 	 */
 	protected  function slugify($text){
+		$umlauts=array('ä','ö','ü', 'ß');
+		$replace=array('ae','oe','ue','ss');
+		$text=strtolower($text);
+		$text=str_replace($umlauts, $replace, $text);
 		$text = preg_replace('/\W+/', '-', $text);
-		$text = strtolower(trim($text, '-'));
+		$text = trim($text, '-');
 		return $text;
 	}
 	

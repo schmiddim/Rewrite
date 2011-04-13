@@ -3,6 +3,7 @@
 require_once 'classes/Routing.php';
 require_once 'classes/Post.php';
 require_once 'classes/Blog.php';
+
 class DependencyFailureTest extends PHPUnit_Framework_TestCase{
 	private static $posts=array();
 	private static $router;
@@ -41,40 +42,41 @@ class DependencyFailureTest extends PHPUnit_Framework_TestCase{
 	public function testGetArticle(){
 		$_SERVER['REQUEST_URI']='/2011/April/11/Einzelpost';
 		$this->setUp();								
-		$this->assertEquals($this->countArticles(), 1);
+		$this->assertEquals($this->countArticles(), 7);
 
 	}
 	
 	public function testGetYear(){
 		$_SERVER['REQUEST_URI']='/2011';
 		$this->setUp();		
-		$this->assertEquals($this->countArticles(), 5);
+		$this->assertEquals($this->countArticles(), 35);
 	
 	}
 
 	public function testGetMonth(){
 		$_SERVER['REQUEST_URI']='/2010/September';
 		$this->setUp();	
-		$this->assertEquals($this->countArticles(), 6);
+		$this->assertEquals($this->countArticles(), 42);
 		
 	}
 	
 	public  function testGetDay(){
 		$_SERVER['REQUEST_URI']='/2010/september/23';
 		$this->setUp();
-		$this->assertEquals($this->countArticles(), 5);	
+		$this->assertEquals($this->countArticles(), 35);	
 		
 	}
 
 	public function testGetDocumentRoot(){
 		$_SERVER['REQUEST_URI']='/';	
 		$this->setUp();		
-		$this->assertEquals(self::$blog->getPosts(), "Startseite");
+		
+		$this->assertEquals($this->countArticles(), 35);	
 	}	
 	public function testContentNotFound(){
-		$_SERVER['REQUEST_URI']='/kk/';
+		$_SERVER['REQUEST_URI']='/malformed/';
 		$this->setUp();	
-		$this->assertEquals("404",self::$blog->getPosts());
+		$this->assertEquals("<h1>Leider nichts gefunden &#9785;</h1>",self::$blog->getPosts());
 	}
 
 	/*	public function testException(){

@@ -1,7 +1,8 @@
 /*********************************************************************************************
  @author: Schmitt, Michael (schmiddim@gmx.at)
  @date: 09-04-11
- @desc: ein Beispiel für sprechende Urls (Permalinks)     
+ @desc: ein Beispiel für sprechende Urls (Permalinks). 
+ 		     
        Das Modul *mod_rewrite* muss im Apacheserver aktiviert sein.
        Das Skript wertet eine Url aus und erkennt daraus Anweisungen, ob z.B. 
        			- ein Beitrag ausgegeben werden 
@@ -13,7 +14,7 @@
        	
 			 
 		Verwendung:
-				- In der Datei unittest.php sind ein paar Testfälle. 
+				- In der Datei unittest.php sind einige Testfälle für phpunit. 
 				- Die Datei ins Rootverzeichniss des Apacheservers kopieren. 
  				- .htacces an gleicher Stelle mit folgendem Inhalt anlegen:
 					# BEGIN WRoot
